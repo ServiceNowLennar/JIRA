@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="JIRA Status Mapping" max_length="40" name="x_lerp_lennar_jira_status_mapping" type="collection">
+        <element default="1" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" label="JIRA Status" max_length="40" name="jira_status" type="integer">
+            <choice>
+                <element label="To Do" sequence="1" value="11"/>
+                <element label="In Progress" sequence="2" value="21"/>
+                <element label="Done" sequence="3" value="31"/>
+            </choice>
+        </element>
+        <element choice="1" choice_field="state" choice_table="problem" label="ServiceNow Current Status" max_length="40" name="servicenow_current_status" type="choice">
+            <choice/>
+        </element>
+        <element choice="1" choice_field="state" choice_table="problem" label="ServiceNow Previous Status" max_length="40" name="servicenow_previous_status" type="choice">
+            <choice/>
+        </element>
+    </element>
+</database>
