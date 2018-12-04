@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="JIRA Comments" max_length="40" name="x_lerp_lennar_jira_x_lerp_lennar_ji_jira_comments" type="collection">
+        <element label="Comment Body" max_length="1000" name="comment_body" type="string"/>
+        <element label="Comment ID" max_length="100" name="comment_id" type="string"/>
+        <element label="JIRA Record Key" max_length="100" name="jira_record_key" type="string"/>
+    </element>
+</database>

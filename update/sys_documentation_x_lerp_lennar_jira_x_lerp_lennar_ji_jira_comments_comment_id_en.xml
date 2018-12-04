@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="comment_id" label="Comment ID" language="en" table="x_lerp_lennar_jira_x_lerp_lennar_ji_jira_comments">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>comment_id</element>
+            <help/>
+            <hint/>
+            <label>Comment ID</label>
+            <language>en</language>
+            <name>x_lerp_lennar_jira_x_lerp_lennar_ji_jira_comments</name>
+            <plural>Comment IDs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>Amado.Sierra@Lennar.com</sys_created_by>
+            <sys_created_on>2018-12-04 13:20:00</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>d710aaab4fc627000f24d48e5210c769</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Comment ID</sys_name>
+            <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+            <sys_update_name>sys_documentation_x_lerp_lennar_jira_x_lerp_lennar_ji_jira_comments_comment_id_en</sys_update_name>
+            <sys_updated_by>Amado.Sierra@Lennar.com</sys_updated_by>
+            <sys_updated_on>2018-12-04 13:20:00</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
