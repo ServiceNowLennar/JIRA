@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_lerp_lennar_jira.JiraDocument</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>JiraDocument</name>
+        <script><![CDATA[var JiraDocument = Class.create();
+JiraDocument.prototype = {
+	initialize: function(jiraDoc) {
+		
+		gs.include('x_rens_regolink_ji.underscore.js');
+		this.jiraDoc = jiraDoc;
+	},
+	
+	findCustomKeyValueFields : function(params){
+		params = this._validateParams(params);
+		params['valType'] = 'keyvalue';
+		
+		return this.findCustomFields(params);
+	},
+	
+	findCustomFields : function(params /* { obj:{}, valType:'string' [opt], evalFunc:function [opt]} */){
+		params = this._validateParams(params);
+		
+		valType = params.valType || 'string';
+		var valTypeMap = this.valTypeMaps[valType];
+		if(!valTypeMap){ throw "Value type of '" + valType + "' is not valid.  Please use one of " + _.keys(valTypeMaps); }
+			
+		var evalFunc = params.evalFunc;
+		
+		
+		var x = _.chain(params.obj.fields)
+		.filter(function(val, key){
+			var answer = key.indexOf('customfield') === 0;
+			if(answer){
+				if(evalFunc){
+					answer = evalFunc(val);
+				}
+				answer = evalFunc(val);
+			}
+			return  answer;
+		})
+		.map(function(val, key){
+			return {key : val};
+		})
+		.map(valTypeMap)
+		.compact();
+		
+		gs.info('x:' + (new global.JSON()).encode(x.value()));
+		
+		return x.value();
+	},
+	
+	valTypeMaps : {
+		'keyvalue' : function(arrStr){
+			var result = {};
+			var matches = (arrStr + '').match(/\[([^\]]+)]/);
+			if(matches && matches.length >= 1) {
+				var match = _.first(matches);
+				match = match.substring(1, match.lastIndexOf(']'));
+				var components = match.split(',');
+				var newObj = {};
+				_.each(components, function(pair){
+					var pairPieces = pair.split('=');
+					var key = pairPieces[0];
+					var val = pairPieces[1];
+					val = val == '<null>' ? null : val;
+					newObj[key] = val;
+				});
+				
+				return newObj;
+			}
+		},
+		'string' : function(str){
+			return str;
+		}
+	},
+	
+	_validateParams: function(params){
+		params = params || {};
+		params.obj = params.obj || this.jiraDoc;
+		
+		if(!params.obj){
+			throw "Must pass in object in constructor or this method with object parameter 'obj' to search, e.g. \"{ 'obj': { { 'id':'1000', 'fields' : {} \"";
+		}
+		
+		params.valType = params.valType || 'string';
+		
+		if(!this.valTypeMaps[params.valType]){
+			throw "Value type of '" + valType + "' is not valid.  Please use one of " + _.keys(valTypeMaps);
+		}
+		
+		return params;
+	},
+	
+	type: 'JiraDocument'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Amado.Sierra@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-04 17:20:58</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f427dfa74f8a27000f24d48e5210c7fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>JiraDocument</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_script_include_f427dfa74f8a27000f24d48e5210c7fc</sys_update_name>
+        <sys_updated_by>Amado.Sierra@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-04 17:20:58</sys_updated_on>
+    </sys_script_include>
+</record_update>
