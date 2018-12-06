@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_lerp_lennar_jira.len.jira.sync.request</event_name>
+        <name>Len BugTracker JIRA Sync Request</name>
+        <order>100</order>
+        <script><![CDATA[(function(){
+	var jiraLogSource = 'JIRA:Sync Request Script Action';
+	var parms = event.parm1.toString().split('/');
+	var lengthRec=parms.length;
+	var jiraResourceName = parms[0];
+	var jiraKey = parms[1];
+	var jiracommentKey='';
+	if(lengthRec=='3')
+		jiracommentKey = parms[2];
+	
+	var didInsert='';
+	
+	if(lengthRec=='3')
+		{
+		var commentInsert = new JiraBugIntegration();
+		didInsert = commentInsert.retrieveCommentslogJiraDocument(jiraResourceName, jiraKey,jiracommentKey);
+		
+	}
+	else{
+		
+		var ji = new JiraBugIntegration();
+		didInsert = ji.retrieveAndProcessJiraDocument(jiraResourceName, jiraKey);
+		
+	}
+	
+	if(didInsert){
+		gs.info('success: Request to Jira Sync succeeded for ' + event.parm1, jiraLogSource);
+	} else {
+		gs.info('error: Request to Jira Sync for ' + event.parm1 + ' failed.', jiraLogSource);
+	}
+})();
+// Jira Connector]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:15:31</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>072673f3db0a2300990e6cf3ca9619bb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Len BugTracker JIRA Sync Request</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sysevent_script_action_072673f3db0a2300990e6cf3ca9619bb</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:15:44</sys_updated_on>
+    </sysevent_script_action>
+</record_update>

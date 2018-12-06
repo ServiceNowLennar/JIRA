@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>delete</function_name>
+        <http_method>delete</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>JiraBug [ delete ]</qualified_name>
+        <rest_endpoint>${base_url}/rest/api/latest/${resourceName}/${id}</rest_endpoint>
+        <rest_message display_value="JiraBug">6ae9bf77db0a2300990e6cf3ca96190c</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:48:17</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>26cdffbfdb0a2300990e6cf3ca9619d5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>delete</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_rest_message_fn_26cdffbfdb0a2300990e6cf3ca9619d5</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:48:17</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

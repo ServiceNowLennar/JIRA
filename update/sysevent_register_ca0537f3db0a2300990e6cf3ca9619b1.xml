@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <description/>
+        <event_name>x_lerp_lennar_jira.len.jira.sync.request</event_name>
+        <fired_by/>
+        <queue/>
+        <suffix>len.jira.sync.request</suffix>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:09:53</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ca0537f3db0a2300990e6cf3ca9619b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_lerp_lennar_jira.len.jira.sync.request</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sysevent_register_ca0537f3db0a2300990e6cf3ca9619b1</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:09:53</sys_updated_on>
+        <table/>
+    </sysevent_register>
+</record_update>

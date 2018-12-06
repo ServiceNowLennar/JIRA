@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_processor">
+    <sys_processor action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <description>Used for Jira callbacks (notification of update)</description>
+        <interactive>false</interactive>
+        <name>JiraCallback-BugTracker</name>
+        <parameters>resourceName,key,integrationKey,commentkey</parameters>
+        <params_endpoint>x_lerp_lennar_jira_resourceName, x_lerp_lennar_jira_key, x_lerp_lennar_jira_integrationKey, x_lerp_lennar_jira_commentkey</params_endpoint>
+        <path>jiracallback</path>
+        <path_endpoint>x_lerp_lennar_jira_jiracallback</path_endpoint>
+        <require_csrf>false</require_csrf>
+        <roles>snc_internal</roles>
+        <script><![CDATA[/* Sample Call to Sync from Jira to ServiceNow */
+/* /jiracallback.do?resourceName=issue&key=TP-3 */
+/* /jiracallback.do?resourceName=issue&key=TP-3&immediate=true to disable async */
+
+(function(){
+	if(gs.getProperty('x_rens_regolink_ji.rego.jira.callback.enabled') !== 'true'){
+		g_response.setHeader("Content-Type", "text/plain");
+		g_processor.writeOutput('Disabled:Please see the x_rens_regolink_ji.rego.jira.callback.enabled system property');
+		return;
+	}
+	if(gs.hasRole('admin')){
+		g_processor.writeOutput('Begin:Processing JIRA Callback Request');
+	}
+	
+	var responseMessage = '';
+	var jiraResourceName = g_request.getParameter('x_rens_regolink_ji_resourceName'); // e.g. "issue"
+	var jiraKey = g_request.getParameter('x_rens_regolink_ji_key'); // e.g. 'OSUDEMO-7'
+	var jiraintegrationKey=g_request.getParameter('x_rens_regolink_ji_integrationKey');
+	
+	var jiracommentKey=g_request.getParameter('x_rens_regolink_ji_commentkey');
+	
+	
+	// If querystring contains parameter "immediate" it will not execute async.
+	var async = true;
+	
+	
+	if(!jiraResourceName || !jiraKey || (jiraintegrationKey!=gs.getProperty('x_rens_regolink_ji.jira.integration.key'))){
+		g_response.setStatus(400); // Bad Request
+		responseMessage = 'error:Did not provide the resourceName or key query string parameters. Please format the url thusly https://(myinstancename).service-now.com/jiracallback.do?x_rens_regojira_resourceName=issue&x_rens_regojira_key=$(issue.key)';
+	} else {
+		
+		var msg = '' + jiraResourceName + '/' + jiraKey;
+			if(jiracommentKey!='')
+			msg+='/' + jiracommentKey;
+		
+		try {
+			if(async){
+				gs.eventQueue('x_rens_regolink_ji.rego.jira.sync.reques', null, msg);
+				responseMessage = 'success:item queued to sync';
+			} else {
+				
+				var didInsert='';
+				if(jiraResourceName!="worklog")
+					{
+					if(jiracommentKey!=null)
+						{var commentInsert = new JiraBugIntegration();
+					didInsert = commentInsert.retrieveCommentslogJiraDocument(jiraResourceName, jiraKey,jiracommentKey);
+					
+				}
+				else{
+					
+					var ji = new JiraBugIntegration();
+					didInsert = ji.retrieveAndProcessJiraDocument(jiraResourceName, jiraKey);
+					
+				}
+			}
+			
+			if(!didInsert){
+				g_response.setStatus(400);
+				if(gs.hasRole('admin')){
+					g_processor.writeOutput('error: Request to Jira Sync for ' + msg + ' failed.');
+				}
+				
+			} else {
+				responseMessage = 'success:item synced';
+			}
+		}
+	} catch(exc){
+		responseMessage = 'Error: Attempt to Request to Jira Sync for ' + msg + ' failed with message:' + exc;
+		if(gs.hasRole('admin')){
+			g_processor.writeOutput('Error Details:', msg);
+		}
+		g_response.setStatus(400); // Bad Request
+		gs.logError(responseMessage, 'JIRA:JiraCallback');
+	}
+}
+g_response.setHeader("Content-Type", "text/plain");
+g_processor.writeOutput(responseMessage);
+g_processor.writeOutput('\n');
+g_processor.writeOutput('executed async:' + async.toString());
+
+return;
+})();
+// JIRA Connector
+]]></script>
+        <sys_class_name>sys_processor</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:22:11</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>ecc73777db0a2300990e6cf3ca961930</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>JiraCallback-BugTracker</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_processor_ecc73777db0a2300990e6cf3ca961930</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:22:11</sys_updated_on>
+        <type>script</type>
+    </sys_processor>
+</record_update>

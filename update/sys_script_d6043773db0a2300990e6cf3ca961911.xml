@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>problem</collection>
+        <condition>gs.getProperty('x_rens_regolink_ji.jira.integration.module')=="problem" &amp;&amp; gs.getSession().isInteractive()</condition>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Len BugTracker-Create/Update JIRA Bug</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var ji = new JiraBugIntegration();
+	if(current.x_rens_regolink_ji_jira_integration==true && current.x_rens_regolink_ji_jira_project!="" && current.x_rens_regolink_ji_jira_key==''&& (gs.getProperty('x_rens_regolink_ji.jira.problem.creation.source')=="snow" || gs.getProperty('x_rens_regolink_ji.jira.problem.creation.source')=="both" )){
+		
+		var createRec;
+		createRec = ji.createJiraIssue(current);
+		
+	}
+	if(current.x_rens_regolink_ji_jira_integration==true && current.x_rens_regolink_ji_jira_project!="" && current.x_rens_regolink_ji_jira_key!='')
+		{
+		
+		var updateRec;
+		var jiraStatus='';
+		
+		jiraStatus = -1;
+		var oldState = current.x_rens_regolink_ji_oldstatus;
+		var newState = current.state;
+		if(oldState!=newState){
+			var relStatus=new GlideRecord('x_rens_regolink_ji_jira_status_mapping');
+			relStatus.addQuery('active',true);
+			relStatus.addQuery('servicenow_current_status',newState);
+			relStatus.addQuery('servicenow_previous_status',oldState);
+			relStatus.query();
+			if(relStatus.next())
+				{
+				jiraStatus=relStatus.jira_status;
+			}
+			gs.info('jira Status'+jiraStatus);
+			
+		}
+		ji.updateJiraIssue(jiraStatus,"issue");
+		
+	}
+	
+	
+	
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:05:53</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d6043773db0a2300990e6cf3ca961911</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Len BugTracker-Create/Update JIRA Bug</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_script_d6043773db0a2300990e6cf3ca961911</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:05:53</sys_updated_on>
+        <template/>
+        <when>async</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=d6043773db0a2300990e6cf3ca961911"/>
+</record_update>

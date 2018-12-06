@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Field  name at ServiceNow side which should be used to get the corresponding user id from Jira</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_lerp_lennar_jira.jira.user.reference.field</name>
+        <read_roles/>
+        <suffix>jira.user.reference.field</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 12:51:38</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>de23e373dbc62300990e6cf3ca961941</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_lerp_lennar_jira.jira.user.reference.field</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_properties_de23e373dbc62300990e6cf3ca961941</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 12:51:38</sys_updated_on>
+        <type>string</type>
+        <value>email</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=de23e373dbc62300990e6cf3ca961941"/>
+</record_update>

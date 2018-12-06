@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="JIRA Bug ProjectPull" max_length="40" name="x_lerp_lennar_jira_bug_projectpull" type="collection">
+        <element label="Project Key" max_length="40" name="project_key" type="string"/>
+        <element label="Project Name" max_length="40" name="project_name" type="string"/>
+    </element>
+</database>

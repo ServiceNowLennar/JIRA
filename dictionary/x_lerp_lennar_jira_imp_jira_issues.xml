@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Imp Jira Issues" max_length="40" name="x_lerp_lennar_jira_imp_jira_issues" type="collection">
+        <element label="fields assignee emailaddress" max_length="40" name="u_fields_assignee_emailaddress" type="string"/>
+        <element label="fields description" max_length="40" name="u_fields_description" type="string"/>
+        <element label="fields issuetype id" max_length="40" name="u_fields_issuetype_id" type="string"/>
+        <element label="fields issuetype name" max_length="40" name="u_fields_issuetype_name" type="string"/>
+        <element label="fields priority name" max_length="40" name="u_fields_priority_name" type="string"/>
+        <element label="fields project id" max_length="40" name="u_fields_project_id" type="string"/>
+        <element label="fields project key" max_length="40" name="u_fields_project_key" type="string"/>
+        <element label="fields Summary" max_length="40" name="u_fields_summary" type="string"/>
+        <element label="ID" max_length="40" name="u_id" type="string"/>
+        <element label="Key" max_length="40" name="u_key" type="string"/>
+        <element label="Self" max_length="40" name="u_self" type="string"/>
+    </element>
+</database>

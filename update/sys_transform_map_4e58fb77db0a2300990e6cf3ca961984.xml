@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_map">
+    <sys_transform_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copy_empty_fields>false</copy_empty_fields>
+        <enforce_mandatory_fields>No</enforce_mandatory_fields>
+        <name>Jira Issue to Defect Transform</name>
+        <order>100</order>
+        <run_business_rules>true</run_business_rules>
+        <run_script>true</run_script>
+        <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
+	if(gs.getProperty('x_rens_regolink_ji.jira.integration.module')!="defect")
+		{
+			ignore=true;
+		}
+	if(source.u_fields_issuetype_name == 'Bug' ){	
+		
+		if(action==="insert" )
+			{
+			target.x_rens_regolink_ji_jira_integration=true;
+			target.x_rens_regolink_ji_integration_status="Success";
+				target.x_rens_regolink_ji_jira_bug_url=gs.getProperty('x_rens_regolink_ji.jira.instance.baseurl')+"/browse/"+source.u_key;
+			
+				var relProject=new GlideRecord('x_rens_regolink_ji_jira_projects');
+				relProject.addQuery('jira_key',source.u_fields_project_key);
+				relProject.query();
+				if(relProject.next())
+					{
+						target.x_rens_regolink_ji_jira_project=relProject.sys_id;
+					}
+			if(gs.getProperty('x_rens_regolink_ji.jira.problem.creation.source')=="snow")
+				{
+				ignore=true;
+			}
+			
+		}}
+		else{
+			ignore=true;
+		}
+		
+		
+	})(source, target, map, log, action==="update");]]></script>
+        <source_table>x_lerp_lennar_jira_imp_jira_issues</source_table>
+        <sys_class_name>sys_transform_map</sys_class_name>
+        <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+        <sys_created_on>2018-12-05 14:24:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4e58fb77db0a2300990e6cf3ca961984</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Jira Issue to Defect Transform</sys_name>
+        <sys_package display_value="Lennar Jira Tracker" source="x_lerp_lennar_jira">5f0d5ae74fc627000f24d48e5210c727</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+        <sys_update_name>sys_transform_map_4e58fb77db0a2300990e6cf3ca961984</sys_update_name>
+        <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+        <sys_updated_on>2018-12-05 14:24:32</sys_updated_on>
+        <target_table>rm_defect</target_table>
+    </sys_transform_map>
+</record_update>

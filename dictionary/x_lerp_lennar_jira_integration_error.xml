@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="JIRA Integration Error" max_length="40" name="x_lerp_lennar_jira_integration_error" type="collection">
+        <element label="Error code" max_length="40" name="error_code" type="string"/>
+        <element label="Error message" max_length="40" name="error_message" type="string"/>
+        <element label="Record" max_length="40" name="record" type="string"/>
+        <element label="Status" max_length="40" name="status" type="string"/>
+    </element>
+</database>

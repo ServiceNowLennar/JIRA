@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="sc_task" version="2" view="rpt-temp6ec9d2c34f0331001dd0e28d0210c77f_8d7184234f4442004b6aacb14210c7bc">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>number</element>
+            <list_id display_value="sc_task" element="NULL" name="sc_task" parent="NULL" relationship="NULL" sys_domain="global" view="23914c774fc267005acc029d0210c7d1">c12200f74fc267005acc029d0210c7b2</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+            <sys_created_on>2018-12-04 20:28:18</sys_created_on>
+            <sys_id>492200f74fc267005acc029d0210c7b2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+            <sys_updated_on>2018-12-04 20:28:18</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>request_item.u_hr_offboarding.u_offboarded</element>
+            <list_id display_value="sc_task" element="NULL" name="sc_task" parent="NULL" relationship="NULL" sys_domain="global" view="23914c774fc267005acc029d0210c7d1">c12200f74fc267005acc029d0210c7b2</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+            <sys_created_on>2018-12-04 20:28:18</sys_created_on>
+            <sys_id>c92200f74fc267005acc029d0210c7b2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+            <sys_updated_on>2018-12-04 20:28:18</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>sc_task</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>Jeffrey.Figueroa@Lennar.com</sys_created_by>
+            <sys_created_on>2018-12-04 20:28:18</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c12200f74fc267005acc029d0210c7b2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name/>
+            <sys_package/>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Lennar Jira Tracker">5f0d5ae74fc627000f24d48e5210c727</sys_scope>
+            <sys_update_name/>
+            <sys_updated_by>Jeffrey.Figueroa@Lennar.com</sys_updated_by>
+            <sys_updated_on>2018-12-04 20:28:18</sys_updated_on>
+            <sys_user/>
+            <view display_value="Rpt-temp6ec9d2c34f0331001dd0e28d0210c77f_8d7184234f4442004b6aacb14210c7bc" name="rpt-temp6ec9d2c34f0331001dd0e28d0210c77f_8d7184234f4442004b6aacb14210c7bc">23914c774fc267005acc029d0210c7d1</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

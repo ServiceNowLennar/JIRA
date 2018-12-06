@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="JIRA Project" max_length="40" name="x_lerp_lennar_jira_project" type="collection">
+        <element label="JIRA Key" max_length="40" name="jira_key" type="string"/>
+        <element label="Project Name" max_length="40" name="project_name" type="string"/>
+    </element>
+</database>
